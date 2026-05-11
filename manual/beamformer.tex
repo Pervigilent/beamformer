@@ -1,0 +1,59 @@
+\documentclass[11pt]{report}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{multirow}
+
+\newtheoremstyle{example} % Style name
+	{10pt} % Space above
+	{10pt} % Space below
+	{\normalfont} % Body font
+	{} % Header font
+	{\bfseries} % Header font
+	{.} % Separator
+	{10pt} % Space after header
+	{} % Header text
+\theoremstyle{example}
+\newtheorem{example}{Example}[section]
+\newtheorem{definition}{Definition}[section]
+
+\begin{document}
+
+\title{FPGA Beamformer}
+\author{Stewart Nash}
+\date{2026}
+
+\maketitle
+
+\chapter{Adaptive Filtering}
+\begin{center}
+\textit{"Filters that adapt to a changing environment are discussed. The stochastic Wiener filtering and deterministic least-squares problems are set up, and the similarity between them is pointed out. First, a block-processing approach is taken in the solution to these two problems. Second, a fading memory (recursive) approach is taken. Then the application of these algorithms to the adaptive beamforming (ABF) problem is considered. The chapter appendix provides background material on conventional beamforming (CBF)."}
+\end{center}
+\vspace{1em}
+\setcounter{section}{-1}
+\section{Introduction}
+Numerous applications exist that require a linear filtering operation. Often, the nature of that filtering task is time-varying in some nondeterministic fashion owing to nonstationarity of the underlying time series. In such situations, a filter that can adapt to a changing environment is needed. Examples include adaptive noise canceling, line enhancing, frequency tracking, and channel equalization. Beyond the discussion here, additional material on adaptive filtering can be found in references 1 through 16.
+
+\section{The Stochastic Wiener Filtering and Deterministic Least Squares Problem}
+The problem of interest is described in Figure 11.1. The goal is to filter the time series $x[n]$ with a causal, finite impulse response (FIR) digital filter to yield an estimate of the time series $s[n]$. The error in that estimate is denoted $e[n]$
+\begin{equation}
+	e[n]=s[n]-\hat{s}[n]=s[n]+\sum_{k=0}^N{h_kx[n-k]}
+\end{equation}
+Written in matrix form, Eq. 11.1 becomes
+\begin{equation}
+	e[n]=s[n]+[h_0\,h_1\,\dots\,h_N]
+	\begin{bmatrix}
+		x[n]\\
+		x[n-1]\\
+		\vdots\\
+		x[n-N]
+	\end{bmatrix}
+\end{equation}
+or, in vector notation,
+\begin{equation}
+	e[n]=s[n]+\mathbf{h}^T\mathbf{x}
+\end{equation}
+
+\end{document}
