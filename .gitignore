@@ -1,0 +1,13 @@
+## Core latex/pdflatex auxiliary files:
+manual/*.aux
+manual/*.lof
+manual/*.log
+manual/*.lot
+manual/*.fls
+manual/*.out
+manual/*.toc
+manual/*.fmt
+manual/*.fot
+manual/*.cb
+manual/*.cb2
+manual/.*.lb
