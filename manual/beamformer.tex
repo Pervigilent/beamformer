@@ -107,7 +107,7 @@ And, for the least squares problem
 \end{equation}
 The next step in solving for the unknown filter vector $\mathbf{h}$ is to write an expression for squared error based on Eq. 11.3
 \begin{equation}
-	|e[n]|^2=s^*[n]s[n]+s^*[n]\mathbf{h}^T\mathbf{x}+\mathbf{h}\mathbf{x}^*d[n]+\mathbf{h}\mathbf{x}^*\mathbf{h}^T\mathbf{x}
+	|e[n]|^2=s^*[n]s[n]+s^*[n]\mathbf{h}^T\mathbf{x}+\mathbf{h}^\dagger\mathbf{x}^*d[n]+\mathbf{h}\mathbf{x}^*\mathbf{h}^T\mathbf{x}
 \end{equation}
 By making use of the definitions of $R_{ss}[0]$, $\mathbf{v}$, and $\mathbf{T}$ the average squared error  $\varepsilon(\mathbf{h})$ can be derived from Eq. 11.14 for both the Wiener filtering and least squares problems as
 \begin{equation}
