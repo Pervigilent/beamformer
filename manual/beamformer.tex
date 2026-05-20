@@ -27,6 +27,46 @@
 
 \maketitle
 
+\chapter{Realization of Digital Linear Systems}
+%\section{Realization of Digital Linear Systems}
+
+The realization of discrete systems is accomplished by converting the system transfer function into an algorithm for implementation via a digital network. The implementation of the algorithm represents the selected form of the difference equation considering computational requirements and finite word-length effects on system performance. The process of determining the optimum realization for the digital network is iterative and is initiated in step 3, \emph{Signal Prcoessing Design}, of the system design methodology. The resources of the signal processor hardware are analyzed for the proposed implementaion in step 4, \emph{Resource Analysis}. When an acceptable design is achieved, the iteration is stopped. In this chapter we introduce basic digital linear system realizations and show the use of the Z-transform in the realization analysis. The iterative analysis considering finite wordlength effects and computational requirements will be left to Chapters 9 and 10.
+
+\section{Network Definitions and Operations}
+%\subsection{Network Definitions and Operations}
+
+In Chapter 2 we introduce three basic operations -- addition, multiplication, and unit delay -- that are used to implement the systems described here. In addition, sampling rate decrease, sampling rate increase, and modulation operations were defined.
+
+\chapter{Lattice Filters}
+
+\section{All-Pass Filter}
+
+\begin{equation}
+	\begin{aligned}
+		w_1[n]&=w_4[n]-x[n]\\
+		w_2[n]&=\alpha w_1[n]\\
+		w_3[n]&=w_2[n]+x[n]\\
+		w_4[n]&=w_3[n-1]\\
+		y[n]&=w_2[n]+w_4[n]
+	\end{aligned}
+\end{equation}
+
+\begin{equation}
+	Y(z)=\frac{z^{-1}-\alpha}{1-\alpha z^{-1}}X(z)
+\end{equation}
+
+\begin{equation}
+	H(z)=\frac{z^{-1}-\alpha}{1-\alpha z^{-1}}
+\end{equation}
+
+\section {M-Order Filter}
+
+$m$-degree polynomial
+\begin{align}
+	a_n(n)&=K_n\\
+	a_{n-1}(i)&=\frac{a_n(i)-a_n(n)-a_n(n-1)}{1-a_n^2(n)}
+\end{align}
+
 \chapter{Adaptive Filtering}
 \begin{center}
 \textit{"Filters that adapt to a changing environment are discussed. The stochastic Wiener filtering and deterministic least-squares problems are set up, and the similarity between them is pointed out. First, a block-processing approach is taken in the solution to these two problems. Second, a fading memory (recursive) approach is taken. Then the application of these algorithms to the adaptive beamforming (ABF) problem is considered. The chapter appendix provides background material on conventional beamforming (CBF)."}
