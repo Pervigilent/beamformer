@@ -36,7 +36,7 @@
 \section{Introduction}
 Numerous applications exist that require a linear filtering operation. Often, the nature of that filtering task is time-varying in some nondeterministic fashion owing to nonstationarity of the underlying time series. In such situations, a filter that can adapt to a changing environment is needed. Examples include adaptive noise canceling, line enhancing, frequency tracking, and channel equalization. Beyond the discussion here, additional material on adaptive filtering can be found in references 1 through 16.
 
-\section{The Stochastic Wiener Filtering and Deterministic Least Squares Problem}
+\section[Wiener Filtering and Least Squares]{The Stochastic Wiener Filtering and Deterministic Least Squares Problem}
 The problem of interest is described in Figure 11.1. The goal is to filter the time series $x[n]$ with a causal, finite impulse response (FIR) digital filter to yield an estimate of the time series $s[n]$. The error in that estimate is denoted $e[n]$
 \begin{equation}
 	e[n]=s[n]-\hat{s}[n]=s[n]+\sum_{k=0}^N{h_kx[n-k]}
@@ -107,11 +107,11 @@ And, for the least squares problem
 \end{equation}
 The next step in solving for the unknown filter vector $\mathbf{h}$ is to write an expression for squared error based on Eq. 11.3
 \begin{equation}
-	|e[n]|^2=s^*[n]s[n]+s^*[n]\mathbf{h}^T\mathbf{x}+\mathbf{h}^\dagger\mathbf{x}^*d[n]+\mathbf{h}\mathbf{x}^*\mathbf{h}^T\mathbf{x}
+	|e[n]|^2=s^*[n]s[n]+s^*[n]\mathbf{h}^T\mathbf{x}+\mathbf{h}^\dagger\mathbf{x}^*s[n]+\mathbf{h}^\dagger\mathbf{x}^*\mathbf{h}^T\mathbf{x}
 \end{equation}
 By making use of the definitions of $R_{ss}[0]$, $\mathbf{v}$, and $\mathbf{T}$ the average squared error  $\varepsilon(\mathbf{h})$ can be derived from Eq. 11.14 for both the Wiener filtering and least squares problems as
 \begin{equation}
-	\varepsilon(\mathbf{h})=R_{ss}[0]+\mathbf{v}\mathbf{h}+\mathbf{h}\mathbf{v}+\mathbf{h}\mathbf{T}\mathbf{h}
+	\varepsilon_N(\mathbf{h})=R_{ss}[0]+\mathbf{v}^\dagger\mathbf{h}+\mathbf{h}^\dagger\mathbf{v}+\mathbf{h}^\dagger\mathbf{T}^T\mathbf{h}
 \end{equation}
 Now, minimizing $\varepsilon(\mathbf{h})$ with respect to $\mathbf{h}$ leads to the following equation
 \begin{equation}
@@ -122,5 +122,39 @@ or
 	\mathbf{T}^T\mathbf{h}=-\mathbf{v}
 \end{equation}
 Expressing Eq. 11.17 in expanded form wil be of interest in the next section
+\begin{equation}
+	\begin{split}
+		&\begin{bmatrix}
+			R_{xx}[0] & R_{xx}^*[1] & \cdots&R_{xx}^*[N-1]&R_{xx}^*[N]\\
+			R_{xx}[1] & R_{xx}[0] & \cdots & R_{xx}^*[N-2] & R_{xx}^*[N-1]\\
+			\vdots & \vdots & \ddots & \vdots & \vdots\\
+			R_{xx}[N-1] & R_{xx}[N-2] & \cdots & R_{xx}[0] & R_{xx}^*[1]\\
+			R_{xx}[N] & R_{xx}[N-1] & \cdots & R_{xx}[1] & R_{xx}[0]
+		\end{bmatrix}
+		\begin{bmatrix}
+			h_0\\
+			h_1\\
+			\vdots\\
+			h_{N-1}\\
+			h_N
+		\end{bmatrix}=\\
+		&-
+		\begin{bmatrix}
+			R_{xs}[0]\\
+			R_{xs}[1]\\
+			\vdots\\
+			R_{xs}[N-1]\\
+			R_{xs}[N]
+		\end{bmatrix}
+	\end{split}
+\end{equation}
+or
+\begin{equation}
+	\sum_{j=0}^N{R_{xx}[j-i]h_j}=-R_{xs}[j]\quad{i=0,1,\ldots,N}
+\end{equation}
+Now, solving Eq. 11.17 for $\mathbf{h}$ yields
+\begin{equation}
+	\mathbf{h}=-(\mathbf{T}^T)^{-1}\mathbf{v}
+\end{equation}
 
 \end{document}
