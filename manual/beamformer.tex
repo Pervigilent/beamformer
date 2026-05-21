@@ -35,7 +35,24 @@ The realization of discrete systems is accomplished by converting the system tra
 \section{Network Definitions and Operations}
 %\subsection{Network Definitions and Operations}
 
-In Chapter 2 we introduce three basic operations -- addition, multiplication, and unit delay -- that are used to implement the systems described here. In addition, sampling rate decrease, sampling rate increase, and modulation operations were defined.
+In Chapter 2 we introduce three basic operations -- addition, multiplication, and unit delay -- that are used to implement the systems described here. In addition, sampling rate decrease, sampling rate increase, and modulation operations were defined. We now consider the general solution of the response of the system, $y(nT)$, in terms of the input and the network. In Section 3.4.1 we developed the general $N$th-order system transfer function given by Eq. 3.36, that is, the system response function can be written as
+\begin{equation}
+	Y(z)=X(z)H(z)
+\end{equation}
+Thus, the Z-transform of the response $Y(z)$ is determined as the product of the Z-transform of the excitation function $X(z)$ and the transfer function $H(z)$. We have shown that the response of the system can be efficiently determined using $z$-domain analysis.\\
+
+The \emph{transpose} of a network is defined by the following operations:
+\begin{itemize}
+	\item Reverse the direction of all branches in the signal flow graph.
+	\item Interchange the inputs and outputs.
+	\item Reverse the roles of all nodes in the flow graph.
+		\begin{itemize}
+			\item Summing points become branching points.
+			\item Branching points become summing points.
+		\end{itemize}
+\end{itemize}
+Linear time-invariant branch operations remain unchanged in the process of transposition, where only the direction of the branches are reversed. Finally, the system transfer function is unchanged by transposition.\\
+Figure 3.7a is the transpose of the network shown in Fig. 3.6b showing the input on the right and the output on the left. The figure is redrawn in Fig. 3.7b in the normal form with the input on the left. It will be shown in Chapter 7 that the transpose operation provides a method for obtaining filter networks that allow more efficient multirate implementations. Also, in Chapter 9 we show that hte network implementation affets the errors that result from finite arithmetic effects.
 
 \chapter{Lattice Filters}
 
