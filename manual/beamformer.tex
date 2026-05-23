@@ -52,7 +52,9 @@ The \emph{transpose} of a network is defined by the following operations:
 		\end{itemize}
 \end{itemize}
 Linear time-invariant branch operations remain unchanged in the process of transposition, where only the direction of the branches are reversed. Finally, the system transfer function is unchanged by transposition.\\
-Figure 3.7a is the transpose of the network shown in Fig. 3.6b showing the input on the right and the output on the left. The figure is redrawn in Fig. 3.7b in the normal form with the input on the left. It will be shown in Chapter 7 that the transpose operation provides a method for obtaining filter networks that allow more efficient multirate implementations. Also, in Chapter 9 we show that hte network implementation affets the errors that result from finite arithmetic effects.
+Figure 3.7a is the transpose of the network shown in Fig. 3.6b showing the input on the right and the output on the left. The figure is redrawn in Fig. 3.7b in the normal form with the input on the left. It will be shown in Chapter 7 that the transpose operation provides a method for obtaining filter networks that allow more efficient multirate implementations. Also, in Chapter 9 we show that hte network implementation affets the errors that result from finite arithmetic effects.\\
+The dual of a network performs a complementary function to the original network. For example, modulators and demodulators are dual operations. Given a network, its dual is found by transposing the network. Any linear time-invariant or time-varying network has a dual. Interpolators and decimators are dual systems. In Chapter 7 we will see that the dual of a decimator (interpolator) will often result in an efficient form for an interpolator (decimator).\\
+Commutation is the changing of the order of the network operations, as shown in Fig. 3.8 without changing the network results. This can provide for computational savings, as shown in the figure by performing the multiplication prior to the branch operation.
 
 \chapter{Lattice Filters}
 
