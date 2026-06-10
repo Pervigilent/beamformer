@@ -75,6 +75,46 @@ Figures 3.10a and b illustrate a sixth-order filter realization by three second 
 
 \chapter{Lattice Filters}
 
+\section{Single-Multiplier All-Pass Filter}
+
+\subsection{Introduction}
+
+All-pass filters alter the phase of a signal while preserving its magnitude spectrum: the all-pass filter should ideally have unity gain at all frequencies. The purpose of an all-pass filter is thus temporal and phase manipulation. Therefore, all-pass filters are used in applications such phase equalization, group-delay compensation, quadrature signal generation, reverberation systems, filter banks, and adaptive signal processing.\\
+In many DSP systems, particular embedded systems and real-time hardware, multipliers dominate the computational cost. Considerable research has gone into reducing the number of multipliers used to realize a digital filter. A single-multiplier all-pass filter allows one to achieve a higher-order phase response without arithmetic complexity.
+
+\subsection{General Theory}
+
+The magnitude response of a digital all-pass filter is
+\begin{equation}
+	|H(e^{j\omega})|=1
+\end{equation}
+If the phase response is $\phi(\omega)$, the group delay is given by
+\begin{equation}
+	\tau_g(\omega)=-\frac{d\phi(\omega)}{d\omega}
+\end{equation}
+A first-order digital all-pass filter has the following transfer function
+\begin{equation}
+	H(z)=\frac{\alpha+z^{-1}}{1+\alpha z^{-1}}
+\end{equation}
+where $|\alpha|<1$ for stability.
+The transfer function of a second-order section may be written as
+\begin{equation}
+	H(z)=\frac{\alpha_0+\alpha_1z^{-1}+z^{-2}}{1+\alpha_1z^{-1}+\alpha_0z^{-2}}
+\end{equation}
+
+In an all-pass filter, the poles and zeros are reciprocal conjugates. In other words, if a pole is at $p$, the corresponding zero will be at $(p^*)^{-1}$. So, every pole inside the unit circle will have a corresponding zero reflected outside the unit circle. This symmetry is what allows for a unity magnitude response.\\
+Higher order all-pass filters are typically constructed by cascading first and second order sections. And a traditional implementation would use a direct-form or cascade realization. The second order filter given by the transfer function above generally requires several multipliers, including one multiplier per coefficient, multiple additions and delay elements. For an $N$-th order filter, the arithmetic cost scales roughly with $N$. Multipliers consume substantially more silicon area and power than adders or delay elements. THis was problematic in early DPS chips, FPGA realizations, ASIC implementations, and low-power embedded systems.\\
+A multi-multiplier all-pass section may be realized in lattice form, wave digital form, coupled all-pass form, and state-space canonical form. The computational realization differs drastically between these forms, though they represent the same transfer function.
+
+\subsection{Single-Multiplier Justification}
+
+Many all-pass structures can be written in a lattice or coupled form using only one coefficient multiplication per stage. For example, a common first order filter with one coefficient is given by
+\begin{equation}
+	y[n]=-ax[n]+x[n-1]+ay[n-1]
+\end{equation}
+
+Single-multiplier structures benefit from numerical robustness. Direct-form recursive filters are sensitive to coefficient quantization because poles may shift outside of the unit circle. However, lattice all-pass filters only require that the coefficient magnitude is less than 1.
+
 \section{All-Pass Filter}
 
 \begin{equation}
