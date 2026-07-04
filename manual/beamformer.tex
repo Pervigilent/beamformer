@@ -354,13 +354,42 @@ The structure of the filter has the input $x(n)$ go through a lattice and have $
 \end{equation}
 where $v_m$ are the ladder coefficients.
 
+\chapter{Beamforming}
+\section{Antennas}
+\subsection{Directivity}
+The directivity, $D$, of an antenna is given by
+\begin{equation}
+	D(\theta,\phi)=\frac{U(\theta,\phi)}{P_\mathrm{tot}/(4\pi)}
+\end{equation}
+where $theta$ is the zenith (angle) and $\phi$ is the azimuth in spherical coordinates. $U(\theta,\phi)$ is the radiation intensity, which is the power per unit solid angle, and $P_\mathrm{tot}$ is the total radiated power. They are related by
+\begin{equation}
+	P_\mathrm{tot}=\int_0^{2\pi}{\int_0^\pi{U\sin{\theta}\,d\theta,d\phi}}
+\end{equation}
+
+An array factor is a factor by which the radiation pattern of an individual element is multiplied in order to produce the radiation pattern of the entire array. For a linear array of antennas if we assume
+\begin{enumerate}
+	\item The elements are identical
+	\item The elements are uniformily spaced
+	\item The phase shift between adjacent elements is constant
+\end{enumerate}
+the array factor is given by
+\begin{equation}
+	AF(\hat{r})=\sum_{n=1}^N{I_ne^{jk\hat{r}\cdot\overrightarrow{r}_n}}
+\end{equation}
+where $\hat{r}$ is the direction unit vector. (We have suppressed the factor $e^{j\omega t}$.)
+
+Identical assumptions for a planar array (of dimension $M\times N$ with inter-element spacing $d_x$ and $d_y$) yields the following formula for the array factor
+\begin{equation}
+	AF=\sum_{n=1}^N{I_n\left[\sum{I_me^{j(m-1)(kd_x\sin{\theta}\sin{\phi}+\beta_x}}\right]e^{j(n-1)(kd_y\sin{\theta}\sin{\phi}+\beta_y}}
+\end{equation}
+The factors $\beta_x$ and $\beta_y$ are teh progressive phase shift that is used to steady the beam. The factors $I_n$ nad $I_m$ are the excitation coefficients of the individual elements.
+
 \chapter{Wavelet Analysis}
 \section{Introduction}
 This supplemental chapter is an introduction to wavelet theory.
 
 \section{Wavelets}
 A wavelet is a transient oscillation. Wavelets can be used to analyze data by creating a wavelet series representation of a square-integrable function with respect to either a complete, orthonormal set of basis functions, or an overcomplete set or frame of a vector space, for the Hilbert space of square-integrable functions. (This is accomplished through coherent states.) 
-
 A wavelet transform may be considered a form of time-frequency representation for analog signals. A wavelet approximation can be made with a discrete wavelet transform of a sampled signal by using discrete-time filterbanks in a dyadic configuration.
 
 \section{Wavelet Transform}
