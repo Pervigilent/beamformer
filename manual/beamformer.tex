@@ -356,6 +356,37 @@ where $v_m$ are the ladder coefficients.
 
 \chapter{Beamforming}
 \section{Antennas}
+\subsection{Introduction}
+% Infinitesimal Dipole - Radiated Field, Pozar, p. 148
+The electric field (in spherical coordinates) for an infinitesimal dipole (located at the origin) is given by
+\begin{align}
+	E_r&=\eta\frac{I_0l\cos{\theta}}{2\pi r^2}\left(1+\frac{1}{jkr}\right)e^{-jkr}\\
+	E_\theta&=j\eta\frac{kI_0\sin{\theta}}{4\pi r}\left(1+\frac{1}{jkr}-\frac{1}{(kr)^2}\right)e^{-jkr}\\
+	E_\phi&=0
+\end{align}
+In the far-field region, where $kr\gg 1$ we have
+\begin{align}
+	E_r&\approx j\eta\frac{I_0le^{-jkr}}{4\pi r}\cos{\theta}\\
+	E_\theta&\approx 0\\
+	E_\phi&\approx 0
+\end{align}
+Because $\mathbf{E}=\mathbf{\hat{a}}_r\mathbf{E}_r+\mathbf{\hat{a}}_\theta\mathbf{E}_\theta+\mathbf{\hat{a}}_\phi\mathbf{E}_\phi$, this is equivalent to
+\begin{equation}
+	\begin{split}
+		\mathbf{E}&\approx\mathbf{\hat{a}}_\theta E_\theta\\
+		&\approx\mathbf{\hat{a}}_\theta j\eta\frac{I_0le^{-jkr}}{4\pi r}\cos{\theta}
+	\end{split}
+\end{equation}
+% Two-element Array, Pozar, p. 286
+The electric field radiated by $N$ elements (infinitesimal dipoles) is given by
+\begin{equation}
+	\begin{split}
+		\mathbf{E}_\mathrm{tot}&=\sum_{n=1}^N{\mathbf{E}_n}\\
+		&=\sum_{n=1}^N{\mathbf{\hat{a}}_\theta j\eta\frac{I_0le^{-jkr}}{4\pi}\frac{e^{-j(kr_n-(\beta/2))}}{r_n}\cos{\theta_n}}
+	\end{split}
+\end{equation}
+	It may perhaps be apparent from this equation that the total field of the a4rray is equal to a single element positioned at the origin multiplied by a factor which is referred to as teh \emph{array factor}.
+
 \subsection{Directivity}
 The directivity, $D$, of an antenna is given by
 \begin{equation}
