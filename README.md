@@ -6,6 +6,8 @@ Lagrange Adaptive Beamformer
 
 This is an example beamformer project intended to serve as a demonstration. I intend it to serve as education and a template for others wishing to construct an adaptive beamforming array. The repository is divided into several folders.
 
+1. manual
+
 ## Vivado and Vitis
 
 This combination Vivado and Vitis project is partitioned as follows
