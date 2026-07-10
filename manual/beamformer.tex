@@ -420,6 +420,17 @@ Beamforming or spatial filtering is a signal processing technique used in sensor
 
 Consider a three-dimensional coordinate system with azimuth $theta$ and elevation $phi$. (This is essentially the sperical coordinate system. In physics, the azimuthal angle is usually denoted $phi$, and is the angle of rotation around the polar axis, while the polar angle is denoted $theta$ and represents the angle between the polar axis and the radial line. This is opposite to the mathematical convention that we use in which $theta$ is used to denote the polar angle and $phi$ is used to denote the azimuthal angle. The final component of the spherical coordinate system is he radial distance $r$. A point is denoted with the tuple $(r,\theta,\phi$. In atenna theory, we use the term elevation for the polar angle and azimuth for the azimuthal angle. We can freely transform between Cartesian coordinates and spherical coordinates. Note that the z-axis corresponds to the polar axis.)
 
+Let us denote the location of an individual element by $\mathbf{p}_n=\hat{p}_np_n$ and the location of a point at which we measure the field produced by the element as $\mathbf{r}_m=\hat{r}_mr_m$ and finally let us denote the direction of a wavefront or beam as $\hat{k}_l$. If an element has an output $U_n(t)$ the signal at a point is given by
+\begin{equation}
+	E_m(t)=U_n\left(t-\frac{\mathbf{p}_n\cdot\mathbf{r}_n}{c}\right)
+\end{equation}
+Appropriately delaying the individual element signals to point a beam in direction $\hat{k}_l$ yields the beamformer output
+\begin{equation}
+	\begin{split}
+		A_l(t)&=\sum_m{I_mE_mU_n\left(t-\frac{\mathbf{p}_n\cdot(\mathbf{r}_n-\mathbf{k}_l)}{c}\right)}\\
+		&=\sum_m{}
+	\end{split}
+\end{equation}
 
 \chapter{Wavelet Analysis}
 \section{Introduction}
