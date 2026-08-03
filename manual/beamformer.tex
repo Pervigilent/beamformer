@@ -274,7 +274,11 @@ Now, solving Eq. 11.17 for $\mathbf{h}$ yields
 \end{equation}
 
 \section{Block Processing}
-One approach to processing time series is to split an observation interval into subintervals. The subinterval (sample collection) is then processed as a block.
+One approach to processing time series is to split an observation interval into subintervals. The subinterval (sample collection) is then processed as a block. We will assume that the time series is stationary over the duration block in the Wiener filtering approach or that they have been windowed in the least squares approach. The general filter solution $\{h_i\}$ has the solution to the linear prediction problem embedded in it.
+
+\subsection{Linear Prediction}
+One-step forward and backward linear predictors of order $p$ are shown in Figure 11.2. The one-step forward linear predictor weights the most recent $p$ samples $\{x(n-1),\ldots,x(n-p)\}$ of the time series with coefficients $\{a_1,\ldots,a_p\}$ to form an estimate of $-x(n)$. Similarly, the one-step backward linear predictor weights the current and most recent $p-1$ samples $\{x(n),\ldots,x(n-p-1)\}$ of the time series with coefficients $(b_0,\ldots,b_{p-1})$ to form an estimate of $-x(n-p)$. Note that the linear predictors are simply special cases of the general filtering problem shown in Figure 11.1 wher $x(n)$ and $d(n)$ are drawn from the smae underlying time series.\\
+Written explicitly in matrix form, the equation that must be solved to determine the forward linear predictor coefficients is
 
 \section {Fading Memory}
 An adaptive filter can be continuously updated, and a fading memory of past data can be incorporated into its algorithm.
